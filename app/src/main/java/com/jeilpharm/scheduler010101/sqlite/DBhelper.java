@@ -16,11 +16,14 @@ public class DBhelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-
+        sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS mytable(_id INTEGER PRIMARY KEY AUTOINCREMENT, sigun TEXT ,hospital TEXT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        String sql = "DROP TABLE if exists mytable";
 
+        sqLiteDatabase.execSQL(sql);
+        onCreate(sqLiteDatabase);
     }
 }
